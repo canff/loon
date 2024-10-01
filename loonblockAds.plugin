@@ -10,7 +10,7 @@
 #!system_version = 
 #!loon_version = 
 #!date=2024-09-30 22:00:00
-#!support=支持约511款APP/小程序，移除哔哩哔哩、小红书、油管、喜马拉雅、TF、Spotify、微博、高德、贴吧、皮皮虾、网易云音乐。
+#!support=支持约511款APP/小程序，移除哔哩哔哩、小红书、油管、喜马拉雅、TF、Spotify、微博、高德、贴吧、网易云音乐。
 #!remark=下方的所有规则都标注了对应的hostname，可能存在错误或者遗漏，欢迎反馈。对于无法/可选MITM的hostname都特别做了“如开启可自行添加主机名”提示，如果提示后面没有标注主机名则包含所有主机名，否则只包含提示语后面的主机名。
 #############################################
 # "reject"        策略返回 HTTP 状态码 404,不附带任何额外内容
@@ -2457,11 +2457,13 @@ https://apis.lifeweek.com.cn/api/baseConfig/getIosNewConfig reject
 ^https?:\/\/misc-api-prd-mx\.wandafilm\.com\/commend\/common_banner_batch\.api\?bannerInfos=%5B%7B%22cinemaI response-body-replace-regex "WX_index_mp-&-boxAD" "fmz200"
 
 # > 微信
+/*
 # hostname = mp.weixin.qq.com
 # 公众号文章下方广告
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad response-body-replace-regex advertisement fmz200
 # 微信公众号去除商品推广
 ^https?:\/\/mp\.weixin\.qq\.com\/mp\/cps_product_info\?action reject-dict
+*/
 
 # > 网易新闻
 # hostname = c.m.163.com
