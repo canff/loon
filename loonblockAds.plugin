@@ -35,10 +35,9 @@
 # >>>>>>>>>>>>>>> ✅ B ✅ <<<<<<<<<<<<<<
 # > 哔哩哔哩
 # 开屏广告
-/*
-URL-REGEX, ^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH, REJECT-DICT
-URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
-*/
+#URL-REGEX, ^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH, REJECT-DICT
+#URL-REGEX, ^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH, REJECT-DICT
+
 
 # >>>>>>>>>>>>>>> ✅ K ✅ <<<<<<<<<<<<<<
 # > Keep
@@ -142,17 +141,16 @@ IP-CIDR, 115.236.121.195/32, REJECT, no-resolve
 
 # >>>>>>>>>>>>>>> ✅ Z ✅ <<<<<<<<<<<<<<
 # > 知乎
-/*
-DOMAIN, appcloud.zhihu.com, REJECT
-DOMAIN, appcloud2.in.zhihu.com, REJECT
-DOMAIN, crash2.zhihu.com, REJECT
-DOMAIN, mqtt.zhihu.com, REJECT
-DOMAIN, sugar.zhihu.com, REJECT
-DOMAIN, zxid-m.mobileservice.cn, REJECT
-IP-CIDR, 103.41.167.237/32, REJECT, no-resolve
-IP-CIDR, 118.89.204.198/32, REJECT, no-resolve
-IP-CIDR6, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT, no-resolve
-*/
+
+#DOMAIN, appcloud.zhihu.com, REJECT
+#DOMAIN, appcloud2.in.zhihu.com, REJECT
+#DOMAIN, crash2.zhihu.com, REJECT
+#DOMAIN, mqtt.zhihu.com, REJECT
+#DOMAIN, sugar.zhihu.com, REJECT
+#DOMAIN, zxid-m.mobileservice.cn, REJECT
+#IP-CIDR, 103.41.167.237/32, REJECT, no-resolve
+#IP-CIDR, 118.89.204.198/32, REJECT, no-resolve
+#IP-CIDR6, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT, no-resolve
 
 
 [Rewrite]
@@ -428,28 +426,26 @@ IP-CIDR6, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT, no-resolve
 ^https?:\/\/mres\.aibank\.com\/app\/resource\/cim\/cim0000001\/.+\.jpg reject-200
 
 # > 哔哩哔哩
-/*
 # hostname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net
 # 开屏广告
-^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) reject-dict
+#^https:\/\/(?:api\.bilibili\.com\/x\/mengqi\/v1\/resource|app\.bilibili\.com\/x\/resource\/peak\/download) reject-dict
 # 满意度调研
-^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? reject-dict
+#^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? reject-dict
 # 大会员广告
-^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? reject-dict
+#^https:\/\/api\.bilibili\.com\/x\/vip\/ads\/materials\? reject-dict
 # 直播广告
-^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? reject-dict
+#^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? reject-dict
 # 屏蔽默认搜索框关键词
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords reject-dict
+#^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords reject-dict
 # 流量卡推荐
-^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo url reject-dict
+#^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/TFInfo url reject-dict
 # IP请求、地理位置请求 //api.bilibili.com
-^https:\/\/app\.bilibili\.com\/x\/resource\/ip reject-dict
-^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp reject-dict
+#^https:\/\/app\.bilibili\.com\/x\/resource\/ip reject-dict
+#^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp reject-dict
 # 移除视频链接跟踪参数
-(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) 302 $1
+#(^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) 302 $1
 # 移除直播间链接跟踪参数
-(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) 302 $1
-*/
+#(^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) 302 $1
 
 # > 哔哩哔哩漫画
 # hostname = manga.bilibili.com, i*.hdslb.com
