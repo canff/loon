@@ -15,6 +15,6 @@
 ^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/.*?\/v\d\/(version$|notice\?|top_notice\?|advert\?position=[^2]+) url reject-200
 [Script]
 # > 555
-http-response ^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/api\/v\d\/movie\/index_recommend script-path = https://github.com/ddgksf2013/Scripts/raw/master/555Ad.js, requires-body = true, tag = 移除开屏广告
+http-response ^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/api\/v\d\/movie\/index_recommend script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/555Ad.js, requires-body = true, tag = 移除开屏广告
 [MitM]
 hostname = app-v1.ecoliving168.com
