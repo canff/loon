@@ -1,0 +1,1503 @@
+#!name = 其他去广告集
+#!desc = 彩云、滴滴出行、酷狗、酷我、夸克、keep、快递100、起点、网易邮箱大师、全民k歌、美颜相机、美图秀秀、斗鱼、乐播、迅雷、soul、虎扑、猫耳fm、YY、驾校一点通、驾考宝典、汽车之家、七猫去广告、什么值得买、酷安、it之家、网易新闻等等。
+#!author = 可莉
+#!tag = 去广告
+#!system = 
+#!system_version = 
+#!loon_version = 3.2.1(749)
+#!homepage = https://gitlab.com/lodepuly/vpn_tool/-/blob/master/README.md
+#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/Other_icon/120px/KeLee.png
+#!date = 2024-10-21 10:51:41
+
+[Rule]
+# > 彩云
+DOMAIN, abyss.cyapi.cn, REJECT
+DOMAIN, ad.cyapi.cn, REJECT
+DOMAIN, gather.colorfulclouds.net, REJECT
+
+# > 滴滴出行 拦截HTTPDNS
+DOMAIN, hd.xiaojukeji.com, REJECT
+#滴滴出行 拦截广告下发
+DOMAIN, gwp.xiaojukeji.com, REJECT
+AND, ((IP-ASN, 45090, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
+AND, ((IP-ASN, 63646, no-resolve), (DEST-PORT, 25641), (PROTOCOL, TCP)), REJECT
+#DOMAIN, img-ys011.didistatic.com, REJECT
+
+# > 酷狗
+DOMAIN, ads.service.kugou.com, REJECT
+DOMAIN, adstats.tencentmusic.com, REJECT
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, adserviceretry.kugou.com, REJECT
+DOMAIN, adserviceretry.kglink.cn, REJECT
+DOMAIN, ad.tencentmusic.com, REJECT
+DOMAIN, adservice.kugou.com, REJECT
+DOMAIN, splashimgretrybssdl.cloud.kugou.com, REJECT
+#酷狗-腾讯优量汇 - 广告服务商
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, us.l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+#DOMAIN, adsmind.ugdtimg.com, REJECT
+#DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+#DOMAIN, mi.gdt.qq.com, REJECT
+#DOMAIN, win.gdt.qq.com, REJECT
+#DOMAIN, v2.gdt.qq.com, REJECT
+#v.gdt.qq.com, REJECT
+#t.gdt.qq.com, REJECT
+#c2.gdt.qq.com, REJECT
+URL-REGEX, ^http:\/\/log\.stat\.kugou\.com\/mobile\/ad\.html, REJECT
+
+# > 酷我 
+#拦截HTTPDNS
+DOMAIN, serveraddr.service.kugou.com, REJECT
+DOMAIN, twns.p2ptun.qq.com, REJECT
+DOMAIN, tp2p.kg.qq.com, REJECT
+IP-CIDR, 81.71.61.216/32, REJECT, no-resolve
+#腾讯优量汇 - 广告服务商
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, us.l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+#DOMAIN, adsmind.ugdtimg.com, REJECT
+#DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+#DOMAIN, mi.gdt.qq.com, REJECT
+#DOMAIN, win.gdt.qq.com, REJECT
+#DOMAIN, v2.gdt.qq.com, REJECT
+#v.gdt.qq.com, REJECT
+#t.gdt.qq.com, REJECT
+#c2.gdt.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, mobilead.kuwo.cn, REJECT
+DOMAIN, adstats.tencentmusic.com, REJECT
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, ad.tencentmusic.com, REJECT
+DOMAIN, mc.tencentmusic.com, REJECT
+#广告配置
+URL-REGEX, ^http:\/\/rich\.kuwo\.cn\/AdService\/, REJECT-DICT
+URL-REGEX, ^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/user\/freeMode\/, REJECT-DICT
+URL-REGEX, ^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/app\/pasterAdvert\/, REJECT-DICT
+URL-REGEX, ^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/app\/startup\/config, REJECT-DICT
+URL-REGEX, ^http:\/\/rich\.kuwo\.cn\/EcomResourceServer\/, REJECT-DICT
+IP-CIDR, 111.206.98.63/32, REJECT, no-resolve
+#搜索填充词
+URL-REGEX, ^http:\/\/searchrecterm\.kuwo\.cn\/recterm\.s, REJECT-DICT
+#精简我的页面侧边栏
+URL-REGEX, ^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/app\/newMenuList\/menuListInfo, REJECT-DICT
+#迷你播放器横幅
+URL-REGEX, ^http:\/\/vip\d\.kuwo\.cn\/vip\/v\d\/sysinfo\?op=getRePayAndDoPayBox, REJECT-DICT
+#听书页面广告
+URL-REGEX, ^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/album\/adBar\/, REJECT-DICT
+# > keep
+#拦截HTTPDNS
+DOMAIN, httpdns.n.netease.com, REJECT
+DOMAIN, httpdns.calorietech.com, REJECT
+#拦截广告下发
+DOMAIN, hc-ssp.sm.cn, REJECT
+
+# > 快递100去广告
+#字节跳动广告
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
+AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -short.bytetos.com)), REJECT
+AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, p), (DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com)), REJECT // 被更精细的规则替代
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
+DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, i.snssdk.com, REJECT
+DOMAIN, is.snssdk.com, REJECT
+DOMAIN, bds.snssdk.com, REJECT
+DOMAIN, dm.bytedance.com, REJECT
+DOMAIN, dm.pstatp.com, REJECT
+DOMAIN, dm.toutiao.com, REJECT
+DOMAIN, log.snssdk.com, REJECT
+DOMAIN, s3a.pstatp.com, REJECT
+DOMAIN, sdfp.snssdk.com, REJECT
+DOMAIN, tosv.boe.byted.org, REJECT
+DOMAIN, tosv.byted.org, REJECT
+DOMAIN, extlog.snssdk.com, REJECT
+DOMAIN, mssdk-bu.bytedance.com, REJECT
+DOMAIN, toblog.ctobsnssdk.com, REJECT
+DOMAIN, mssdk.volces.com, REJECT
+DOMAIN, pangolin.snssdk.com, REJECT
+DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
+DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+#腾讯
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, adsmind.ugdtimg.com, REJECT
+DOMAIN, c2.gdt.qq.com, REJECT
+DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
+#DOMAIN, mazu.m.qq.com, REJECT // 误杀
+DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzonestyle.gtimg.cn, REJECT // 误杀
+DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN, qzs.qq.com, REJECT
+DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, sdkconfig.video.qq.com, REJECT
+DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
+DOMAIN, v.gdt.qq.com, REJECT
+DOMAIN, v2.gdt.qq.com, REJECT
+DOMAIN, win.gdt.qq.com, REJECT
+DOMAIN, wup.imtt.qq.com, REJECT
+DOMAIN, tpstelemetry.tencent.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+#友盟
+DOMAIN, cnlogs.umeng.com, REJECT
+DOMAIN, errlog.umeng.com, REJECT
+DOMAIN, errnewlog.umeng.com, REJECT
+DOMAIN, ucc.umeng.com, REJECT
+DOMAIN, ulogs.umeng.com, REJECT
+DOMAIN, utoken.umeng.com, REJECT
+DOMAIN, deeplink.umeng.com, REJECT
+DOMAIN, aspect-upush.umeng.com, REJECT
+DOMAIN, plbslog.umeng.com, REJECT
+DOMAIN, log.umtrack.com, REJECT
+DOMAIN, aaid.umeng.com, REJECT
+DOMAIN, log.umsns.com, REJECT
+#极光 - 广告服务商
+DOMAIN, ali-stats.jpush.cn, REJECT
+DOMAIN, ce3e75d5.jpush.cn, REJECT
+DOMAIN, config-junion.jpush.cn, REJECT
+DOMAIN, config.jpush.cn, REJECT
+DOMAIN, fcapi-ipv6.jpush.cn, REJECT
+DOMAIN, gd-stats.jpush.cn, REJECT
+DOMAIN, s.jpush.cn, REJECT
+DOMAIN, sdk.verification.jiguang.cn, REJECT
+DOMAIN, sis-ipv6.jpush.cn, REJECT
+DOMAIN, smartop-sdkapi.jiguang.cn, REJECT
+DOMAIN, status-ipv6.jpush.cn, REJECT
+DOMAIN, tsis.jpush.cn, REJECT
+DOMAIN, user.jpush.cn, REJECT
+DOMAIN-SUFFIX, jiguang.cn, REJECT
+DOMAIN-SUFFIX, jpush.cn, REJECT
+DOMAIN-SUFFIX, jpush.io, REJECT
+#天目 - 广告服务商
+DOMAIN, sdk.tianmu.mobi, REJECT
+DOMAIN, tracker.tianmu.mobi, REJECT
+#上海倍孜
+DOMAIN, sdk.beizi.biz, REJECT
+DOMAIN, api-htp.beizi.biz, REJECT
+#艾狄墨搏 - 广告服务商
+DOMAIN, monitor.ssp.admobile.top, REJECT
+DOMAIN, sdk.ssp.admobile.top, REJECT
+DOMAIN, ax.admobile.top, REJECT
+DOMAIN, jump.admobile.top, REJECT
+DOMAIN-SUFFIX, admobile.top, REJECT
+#快手联盟 - 广告服务商
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+#上海泰之菩信息科技有限公司
+DOMAIN, adx.adtaipo.com, REJECT
+#天津快易科技有限公司
+DOMAIN, adx.kuaiyiad.com, REJECT
+#天脉移动广告平台
+DOMAIN, adreport.adtianmai.com, REJECT
+#数萤技术
+DOMAIN, adxapi.readgps.com, REJECT
+#方麟数字营销
+DOMAIN, t.fanglinad.com, REJECT
+#益起广告
+DOMAIN, trk1.17admob.com, REJECT
+#北京上量优选科技有限公司
+DOMAIN, nfy.slyxmobi.com, REJECT
+#新义互联
+DOMAIN, api.mobrtb.com, REJECT
+#枫岚互联
+DOMAIN, ssp.maplehaze.cn, REJECT
+#北京腾云天下科技有限公司
+DOMAIN-SUFFIX, lnk0.com, REJECT
+
+# > 网易邮箱大师去广告
+#拦截HTTPDNS
+DOMAIN, httpdns.music.163.com, REJECT
+DOMAIN, httpdns.n.netease.com, REJECT
+DOMAIN, httpdns-sdk.n.netease.com, REJECT
+DOMAIN, httpdns.yunxindns.com, REJECT
+DOMAIN, lofter.httpdns.c.163.com, REJECT
+DOMAIN, music.httpdns.c.163.com, REJECT
+DOMAIN, httpdns.yunxindns.com, REJECT
+IP-CIDR, 59.111.239.61/32, REJECT, no-resolve
+IP-CIDR, 59.111.239.62/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.51/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.195/32, REJECT, no-resolve
+URL-REGEX, ^http:\/\/81\.69\.130\.131\/d, REJECT
+URL-REGEX, ^http:\/\/101\.35\.204\.35\/d, REJECT
+URL-REGEX, ^http:\/\/101\.35\.212\.35\/d, REJECT
+URL-REGEX, ^http:\/\/114\.110\.96\.6\/d, REJECT
+URL-REGEX, ^http:\/\/114\.110\.96\.26\/d, REJECT
+URL-REGEX, ^http:\/\/114\.110\.97\.30\/d, REJECT
+URL-REGEX, ^http:\/\/114\.110\.97\.97\/d, REJECT
+URL-REGEX, ^http:\/\/121\.5\.84\.85\/d, REJECT
+URL-REGEX, ^http:\/\/\[2402:4e00:1411:201:0:9964:ba21:5a41\]\/d, REJECT
+#字节跳动广告
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
+AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -short.bytetos.com)), REJECT
+AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, p), (DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com)), REJECT // 被更精细的规则替代
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
+DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, i.snssdk.com, REJECT
+DOMAIN, is.snssdk.com, REJECT
+DOMAIN, bds.snssdk.com, REJECT
+DOMAIN, dm.bytedance.com, REJECT
+DOMAIN, dm.pstatp.com, REJECT
+DOMAIN, dm.toutiao.com, REJECT
+DOMAIN, log.snssdk.com, REJECT
+DOMAIN, s3a.pstatp.com, REJECT
+DOMAIN, sdfp.snssdk.com, REJECT
+DOMAIN, tosv.boe.byted.org, REJECT
+DOMAIN, tosv.byted.org, REJECT
+DOMAIN, extlog.snssdk.com, REJECT
+DOMAIN, mssdk-bu.bytedance.com, REJECT
+DOMAIN, toblog.ctobsnssdk.com, REJECT
+DOMAIN, mssdk.volces.com, REJECT
+DOMAIN, pangolin.snssdk.com, REJECT
+DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
+DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+#百度联盟 - 广告服务商
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, cpro.baidustatic.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN, click-bes.baidu.com, REJECT
+DOMAIN, eclick.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, nadvideo2.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+#腾讯
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, adsmind.ugdtimg.com, REJECT
+DOMAIN, c2.gdt.qq.com, REJECT
+DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
+#DOMAIN, mazu.m.qq.com, REJECT // 误杀
+DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzonestyle.gtimg.cn, REJECT // 误杀
+DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN, qzs.qq.com, REJECT
+DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, sdkconfig.video.qq.com, REJECT
+DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
+DOMAIN, v.gdt.qq.com, REJECT
+DOMAIN, v2.gdt.qq.com, REJECT
+DOMAIN, win.gdt.qq.com, REJECT
+DOMAIN, wup.imtt.qq.com, REJECT
+DOMAIN, tpstelemetry.tencent.com, REJECT
+DOMAIN, ii.gdt.qq.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+#阿里巴巴
+DOMAIN, ossgw.alicdn.com, REJECT
+DOMAIN, ems.youku.com, REJECT
+DOMAIN, hudong.alicdn.com, REJECT
+DOMAIN, et.tanx.com, REJECT
+DOMAIN, beacon-api.aliyuncs.com, REJECT
+DOMAIN, adash.man.aliyuncs.com, REJECT
+DOMAIN, applog.uc.cn, REJECT
+AND, ((DOMAIN-KEYWORD, adash), (DOMAIN-SUFFIX, ut.taobao.com)), REJECT
+#网易
+DOMAIN, nex.163.com, REJECT
+DOMAIN, iad.g.163.com, REJECT
+DOMAIN, adx-bj.anythinktech.com, REJECT
+DOMAIN, api.anythinktech.com, REJECT
+DOMAIN, tk.anythinktech.com, REJECT
+DOMAIN, da.anythinktech.com, REJECT
+DOMAIN, gorgon.youdao.com, REJECT
+#京东
+DOMAIN, dsp-x.jd.com, REJECT
+DOMAIN, xlog.jd.com, REJECT
+DOMAIN, janapi.jd.com, REJECT
+#上海倍孜
+DOMAIN, sdk.beizi.biz, REJECT
+DOMAIN, api-htp.beizi.biz, REJECT
+#变现猫
+DOMAIN, guide2.bianxianmao.com, REJECT
+#聚次方 - TopOn
+DOMAIN, api.mosspf.com, REJECT
+DOMAIN, da.mosspf.com, REJECT
+DOMAIN, mores.toponad.com, REJECT
+DOMAIN, api.toponadss.com, REJECT
+DOMAIN, da.toponadss.com, REJECT
+DOMAIN, tk.toponadss.com, REJECT
+DOMAIN, adx-os.toponadss.com, REJECT
+#塔酷信息
+DOMAIN, mores.motowoo.com, REJECT
+DOMAIN-SUFFIX, motowoo.com, REJECT
+#快手联盟 - 广告服务商
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+#北京锐讯灵通科技有限公司
+DOMAIN, ztoken.uyunad.com, REJECT
+DOMAIN, aaid.uyunad.com, REJECT
+#钧云 - ADHUB
+DOMAIN, api.htp.hubcloud.com.cn, REJECT
+DOMAIN, res1.hubcloud.com.cn, REJECT
+DOMAIN, sdktmp.hubcloud.com.cn, REJECT
+DOMAIN, v.adx.hubcloud.com.cn, REJECT
+#章鱼移动
+DOMAIN, caid.adintl.cn, REJECT
+DOMAIN, sv.adintl.cn, REJECT
+DOMAIN, v.adintl.cn, REJECT
+DOMAIN, oss.cdn.adintl.cn, REJECT
+#布里奇信息科技有限公司
+DOMAIN, tk.bridgeoos.com, REJECT
+DOMAIN, da.bridgeoos.com, REJECT
+DOMAIN, api.bridgeoos.com, REJECT
+DOMAIN, adx-os.bridgeoos.com, REJECT
+DOMAIN, adx-sg-req.bridgeoos.com, REJECT
+DOMAIN-SUFFIX, bridgeoos.com, REJECT
+
+# > 全民k歌
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, adsmind.ugdtimg.com, REJECT
+DOMAIN, c2.gdt.qq.com, REJECT
+DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
+#DOMAIN, mazu.m.qq.com, REJECT // 误杀
+DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzonestyle.gtimg.cn, REJECT // 误杀
+DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN, qzs.qq.com, REJECT
+DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, sdkconfig.video.qq.com, REJECT
+DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
+DOMAIN, v.gdt.qq.com, REJECT
+DOMAIN, v2.gdt.qq.com, REJECT
+DOMAIN, win.gdt.qq.com, REJECT
+DOMAIN, wup.imtt.qq.com, REJECT
+DOMAIN, tpstelemetry.tencent.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+URL-REGEX, ^http:\/\/y\.gtimg\.cn\/music\/common\/upload\/t_k_main_page_banner\/, REJECT
+
+# > 美颜相机
+#广告下发
+DOMAIN, adui.tg.meitu.com, REJECT
+#字节跳动广告
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
+AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -short.bytetos.com)), REJECT
+AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, p), (DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com)), REJECT // 被更精细的规则替代
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
+DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, i.snssdk.com, REJECT
+DOMAIN, is.snssdk.com, REJECT
+DOMAIN, bds.snssdk.com, REJECT
+DOMAIN, dm.bytedance.com, REJECT
+DOMAIN, dm.pstatp.com, REJECT
+DOMAIN, dm.toutiao.com, REJECT
+DOMAIN, log.snssdk.com, REJECT
+DOMAIN, s3a.pstatp.com, REJECT
+DOMAIN, sdfp.snssdk.com, REJECT
+DOMAIN, tosv.boe.byted.org, REJECT
+DOMAIN, tosv.byted.org, REJECT
+DOMAIN, extlog.snssdk.com, REJECT
+DOMAIN, mssdk-bu.bytedance.com, REJECT
+DOMAIN, toblog.ctobsnssdk.com, REJECT
+DOMAIN, mssdk.volces.com, REJECT
+DOMAIN, pangolin.snssdk.com, REJECT
+DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
+DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+#百度联盟 - 广告服务商
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, cpro.baidustatic.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, nadvideo2.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+#腾讯
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, adsmind.ugdtimg.com, REJECT
+DOMAIN, c2.gdt.qq.com, REJECT
+DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
+#DOMAIN, mazu.m.qq.com, REJECT // 误杀
+DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzonestyle.gtimg.cn, REJECT // 误杀
+DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN, qzs.qq.com, REJECT
+DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, sdkconfig.video.qq.com, REJECT
+DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
+DOMAIN, v.gdt.qq.com, REJECT
+DOMAIN, v2.gdt.qq.com, REJECT
+DOMAIN, win.gdt.qq.com, REJECT
+DOMAIN, wup.imtt.qq.com, REJECT
+DOMAIN, tpstelemetry.tencent.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+#个推
+DOMAIN, b-gtc.getui.net, REJECT
+DOMAIN, c-gtc.getui.net, REJECT
+DOMAIN, c-hzgt2.getui.com, REJECT
+DOMAIN, dnms.getui.com, REJECT
+DOMAIN, ido.getui.net, REJECT
+DOMAIN, sdk-conf.getui.com, REJECT
+DOMAIN, sdk-open-phone.getui.com, REJECT
+DOMAIN-SUFFIX, mobileservice.cn, REJECT
+DOMAIN-SUFFIX, getui.com, REJECT
+DOMAIN-SUFFIX, igexin.com, REJECT
+#聚次方 - TopOn
+DOMAIN, api.mosspf.com, REJECT
+DOMAIN, da.mosspf.com, REJECT
+
+# > 美图秀秀去广告
+#字节跳动广告
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
+AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -short.bytetos.com)), REJECT
+AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, p), (DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com)), REJECT // 被更精细的规则替代
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
+DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, i.snssdk.com, REJECT
+DOMAIN, is.snssdk.com, REJECT
+DOMAIN, bds.snssdk.com, REJECT
+DOMAIN, dm.bytedance.com, REJECT
+DOMAIN, dm.pstatp.com, REJECT
+DOMAIN, dm.toutiao.com, REJECT
+DOMAIN, log.snssdk.com, REJECT
+DOMAIN, s3a.pstatp.com, REJECT
+DOMAIN, sdfp.snssdk.com, REJECT
+DOMAIN, tosv.boe.byted.org, REJECT
+DOMAIN, tosv.byted.org, REJECT
+DOMAIN, extlog.snssdk.com, REJECT
+DOMAIN, mssdk-bu.bytedance.com, REJECT
+DOMAIN, toblog.ctobsnssdk.com, REJECT
+DOMAIN, mssdk.volces.com, REJECT
+DOMAIN, pangolin.snssdk.com, REJECT
+DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
+DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+#腾讯
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, adsmind.ugdtimg.com, REJECT
+DOMAIN, c2.gdt.qq.com, REJECT
+DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
+#DOMAIN, mazu.m.qq.com, REJECT // 误杀
+DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzonestyle.gtimg.cn, REJECT // 误杀
+DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN, qzs.qq.com, REJECT
+DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, sdkconfig.video.qq.com, REJECT
+DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
+DOMAIN, v.gdt.qq.com, REJECT
+DOMAIN, v2.gdt.qq.com, REJECT
+DOMAIN, win.gdt.qq.com, REJECT
+DOMAIN, wup.imtt.qq.com, REJECT
+DOMAIN, tpstelemetry.tencent.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+#个推
+DOMAIN, b-gtc.getui.net, REJECT
+DOMAIN, c-gtc.getui.net, REJECT
+DOMAIN, c-hzgt2.getui.com, REJECT
+DOMAIN, dnms.getui.com, REJECT
+DOMAIN, ido.getui.net, REJECT
+DOMAIN, sdk-conf.getui.com, REJECT
+DOMAIN, sdk-open-phone.getui.com, REJECT
+#百度联盟 - 广告服务商
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, cpro.baidustatic.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, nadvideo2.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+#聚次方 - TopOn
+DOMAIN, api.mosspf.com, REJECT
+DOMAIN, da.mosspf.com, REJECT
+#美图秀秀
+DOMAIN, adui.tg.meitu.com, REJECT
+
+# >斗鱼去广告 
+#拦截HTTPDNS
+URL-REGEX, ^http:\/\/203\.107\.1\.33\/\d+\/ss, REJECT
+URL-REGEX, ^http:\/\/203\.107\.1\.34\/\d+\/ss, REJECT
+URL-REGEX, ^http:\/\/linkmicschedule\.douyucdn\.cn\/im_schedule\/im_gate_list, REJECT
+IP-CIDR, 119.29.29.98/32, REJECT, no-resolve
+IP-CIDR, 119.29.29.99/32, REJECT, no-resolve
+#拦截STUN请求
+AND, ((DEST-PORT, 18000), (PROTOCOL, STUN)), REJECT
+DOMAIN, stun1.douyucdn.cn, REJECT
+DOMAIN, stun1.qvb.qcloud.com, REJECT
+#请求重定向
+^(http:\/\/)((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(hlsh5p1\.douyucdn2\.cn)(.*) 302 $1$5$6
+
+# >乐播投屏去广告
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, minigame), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, tnc), (AND, ((OR, ((DOMAIN-KEYWORD, -bjlgy), (DOMAIN-KEYWORD, -alisc), (DOMAIN-KEYWORD, -aliec))), (OR, ((DOMAIN-SUFFIX, snssdk.com), (DOMAIN-SUFFIX, toutiaoapi.com), (DOMAIN-SUFFIX, bytedance.com), (DOMAIN-SUFFIX, zijieapi.com)))))), REJECT // 拦截HTTPDNS
+DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, mssdk-bu.bytedance.com, REJECT
+DOMAIN, toblog.ctobsnssdk.com, REJECT
+DOMAIN, lf-cdn-tos.bytescm.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com, REJECT
+DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com, REJECT
+DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com, REJECT
+DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
+#快手联盟 - 广告服务商
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+#百度联盟 - 广告服务商
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+#上海优比客思科技有限公司 - 广告服务商
+DOMAIN, tower.ubixioe.com, REJECT
+DOMAIN, sdk-data.ubixioe.com, REJECT
+#袤博 - 广告服务商
+DOMAIN, api-c.dutils.com, REJECT
+DOMAIN, api-d.dutils.com, REJECT
+DOMAIN, api-p0.yksdks.com, REJECT
+DOMAIN, cache-verify.dutils.com, REJECT
+DOMAIN, cdn-api-verify.dutils.com, REJECT
+DOMAIN, devs-data.dutils.com, REJECT
+DOMAIN, log-verify.dutils.com, REJECT
+DOMAIN, m.mpl.dutils.com, REJECT
+DOMAIN, api.share.mob.com, REJECT
+DOMAIN, api.verify.mob.com, REJECT
+DOMAIN, log-verify.mob.com, REJECT
+DOMAIN, sdk.push.mob.com, REJECT
+#友盟
+DOMAIN, cnlogs.umeng.com, REJECT
+DOMAIN, errlog.umeng.com, REJECT
+DOMAIN, ucc.umeng.com, REJECT
+DOMAIN, ulogs.umeng.com, REJECT
+DOMAIN, utoken.umeng.com, REJECT
+
+# > 迅雷去广告
+# 字节跳动广告
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
+AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -short.bytetos.com)), REJECT
+AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, p), (DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com)), REJECT // 被更精细的规则替代
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
+DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, i.snssdk.com, REJECT
+DOMAIN, is.snssdk.com, REJECT
+DOMAIN, bds.snssdk.com, REJECT
+DOMAIN, dm.bytedance.com, REJECT
+DOMAIN, dm.pstatp.com, REJECT
+DOMAIN, dm.toutiao.com, REJECT
+DOMAIN, log.snssdk.com, REJECT
+DOMAIN, s3a.pstatp.com, REJECT
+DOMAIN, sdfp.snssdk.com, REJECT
+DOMAIN, tosv.boe.byted.org, REJECT
+DOMAIN, tosv.byted.org, REJECT
+DOMAIN, extlog.snssdk.com, REJECT
+DOMAIN, mssdk-bu.bytedance.com, REJECT
+DOMAIN, toblog.ctobsnssdk.com, REJECT
+DOMAIN, mssdk.volces.com, REJECT
+DOMAIN, pangolin.snssdk.com, REJECT
+DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
+DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+# 小川在线
+DOMAIN, adapi.izuiyou.com, REJECT
+URL-REGEX, ^http:\/\/mercury-gateway\.ixiaochuan\.cn\/mercury\/v1\/ad\/, REJECT-DICT
+#上海优比客思科技有限公司 - 广告服务商
+DOMAIN, e-u1.ubixioe.com, REJECT
+DOMAIN, sdk-data.ubixioe.com, REJECT
+DOMAIN, tower.ubixioe.com, REJECT
+DOMAIN, tx-cfg-u1.ubixioe.com, REJECT
+DOMAIN, tx-data-u1.ubixioe.com, REJECT
+#友盟
+DOMAIN, cnlogs.umeng.com, REJECT
+DOMAIN, errlog.umeng.com, REJECT
+DOMAIN, errnewlog.umeng.com, REJECT
+DOMAIN, ucc.umeng.com, REJECT
+DOMAIN, ulogs.umeng.com, REJECT
+DOMAIN, utoken.umeng.com, REJECT
+#快手联盟 - 广告服务商
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+#腾讯优量汇 - 广告服务商
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+#DOMAIN, adsmind.ugdtimg.com, REJECT
+#DOMAIN, pgdt.ugdtimg.com, REJECT
+DOMAIN-SUFFIX, gdtimg.com, REJECT
+#DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+#DOMAIN, mi.gdt.qq.com, REJECT
+#DOMAIN, win.gdt.qq.com, REJECT
+#DOMAIN, v2.gdt.qq.com, REJECT
+#京东
+DOMAIN, dsp-x.jd.com, REJECT
+DOMAIN, xlog.jd.com, REJECT
+DOMAIN, janapi.jd.com, REJECT
+#TANX广告
+DOMAIN, et.tanx.com, REJECT
+
+# > Soul去广告
+#地理位置 - 影响注册账号时的属地判断
+DOMAIN-SUFFIX, soulapp.cn, DIRECT
+IP-CIDR, 8.210.3.170/32, DIRECT, no-resolve
+IP-CIDR, 47.75.72.47/32, DIRECT, no-resolve
+#广告下发
+DOMAIN, ad-h5-cdn.soulapp.cn, REJECT
+DOMAIN, ad-h5-station-cdn.soulapp.cn, REJECT
+DOMAIN, ad-r.soulapp.cn, REJECT
+DOMAIN, soul-ad.soulapp.cn, REJECT
+#广告域名IP查询
+IP-CIDR, 47.56.131.76/32, REJECT, no-resolve
+IP-CIDR, 47.97.215.55/32, REJECT, no-resolve
+IP-CIDR, 47.99.42.29/32, REJECT, no-resolve
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+IP-CIDR, 47.243.147.125/32, REJECT, no-resolve
+IP-CIDR, 120.27.235.201/32, REJECT, no-resolve
+IP-CIDR, 121.196.197.147/32, REJECT, no-resolve
+
+# > YY去广告
+#拦截HTTPDNS
+DOMAIN, yyapp-httpdns.gslb.yy.com, REJECT
+DOMAIN, union-httpdns.gslb.yy.com, REJECT
+DOMAIN, httpdns-v6.gslb.yy.com, REJECT
+#开屏广告
+DOMAIN, splash.yy.com, REJECT
+#广告下发
+DOMAIN, dsp-ad.yy.com, REJECT
+#腾讯
+DOMAIN, adsmind.gdtimg.com, REJECT
+DOMAIN, adsmind.ugdtimg.com, REJECT
+DOMAIN, c2.gdt.qq.com, REJECT
+DOMAIN, huatuocode.huatuo.qq.com, REJECT
+DOMAIN, info4.video.qq.com, REJECT
+DOMAIN, info6.video.qq.com, REJECT
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, ios.video.mpush.qq.com, REJECT
+#DOMAIN, mazu.m.qq.com, REJECT // 误杀
+DOMAIN, mi.gdt.qq.com, REJECT
+DOMAIN, otheve.beacon.qq.com, REJECT
+DOMAIN, pgdt.gtimg.cn, REJECT
+DOMAIN, pgdt.ugdtimg.com, REJECT
+#DOMAIN, qzonestyle.gtimg.cn, REJECT // 误杀
+DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN, qzs.qq.com, REJECT
+DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN, sdkconfig.video.qq.com, REJECT
+DOMAIN, t.gdt.qq.com, REJECT
+DOMAIN, tmead.y.qq.com, REJECT
+DOMAIN, tmeadbak.y.qq.com, REJECT
+DOMAIN, tmeadcomm.y.qq.com, REJECT
+DOMAIN, tpns.qq.com, REJECT
+DOMAIN, v.gdt.qq.com, REJECT
+DOMAIN, v2.gdt.qq.com, REJECT
+DOMAIN, win.gdt.qq.com, REJECT
+DOMAIN, wup.imtt.qq.com, REJECT
+DOMAIN, tpstelemetry.tencent.com, REJECT
+DOMAIN-KEYWORD, trace.qq.com, REJECT
+DOMAIN-KEYWORD, trace.video.qq.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+DOMAIN-SUFFIX, l.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+IP-CIDR, 47.110.187.87/32, REJECT, no-resolve
+#袤博 - 广告服务商
+DOMAIN, api-c.dutils.com, REJECT
+DOMAIN, api-d.dutils.com, REJECT
+DOMAIN, api-p0.yksdks.com, REJECT
+DOMAIN, cache-verify.dutils.com, REJECT
+DOMAIN, cdn-api-verify.dutils.com, REJECT
+DOMAIN, devs-data.dutils.com, REJECT
+DOMAIN, log-verify.dutils.com, REJECT
+DOMAIN, m.mpl.dutils.com, REJECT
+DOMAIN, api.share.mob.com, REJECT
+DOMAIN, api.verify.mob.com, REJECT
+DOMAIN, log-verify.mob.com, REJECT
+DOMAIN, sdk.push.mob.com, REJECT
+#京东
+DOMAIN, dsp-x.jd.com, REJECT
+DOMAIN, xlog.jd.com, REJECT
+DOMAIN, janapi.jd.com, REJECT
+#天目 - 广告服务商
+DOMAIN, sdk.tianmu.mobi, REJECT
+#上海倍孜
+DOMAIN, sdk.beizi.biz, REJECT
+
+# > 驾校一点通去广告
+#字节跳动广告
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, -sign-), (DOMAIN-SUFFIX, tiktokcdn.com)), REJECT
+AND, ((DOMAIN-KEYWORD, -ttam-), (DOMAIN-SUFFIX, ibyteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ssdk-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -short.bytetos.com)), REJECT
+AND, ((DOMAIN-KEYWORD, v), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -be-pack.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, s), (DOMAIN-KEYWORD, -fe-scm.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -ttcdn-tos.pstatp.com)), REJECT
+#AND, ((DOMAIN-KEYWORD, p), (DOMAIN-KEYWORD, -be-pack-sign.pglstatp-toutiao.com)), REJECT // 被更精细的规则替代
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -fe-tos.pglstatp-toutiao.com)), REJECT
+AND, ((DOMAIN-KEYWORD, sf), (DOMAIN-KEYWORD, -static.i18n-pglstatp.com)), REJECT
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -cdn-tos.bytescm.com)), REJECT //误杀
+AND, ((DOMAIN-KEYWORD, if), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, lf), (DOMAIN-KEYWORD, -analytics.bytescm.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, normal), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -access-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -log-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, -dual-event-), (DOMAIN-SUFFIX, pangle.io)), REJECT
+AND, ((DOMAIN-KEYWORD, api), (DOMAIN-KEYWORD, pangolin), (DOMAIN-SUFFIX, sgsnssdk.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal-lq), (DOMAIN-SUFFIX, zijieapi.com)), REJECT
+URL-REGEX, ^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/, REJECT
+DOMAIN, mon.zijieapi.com, REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, i.snssdk.com, REJECT
+DOMAIN, is.snssdk.com, REJECT
+DOMAIN, bds.snssdk.com, REJECT
+DOMAIN, dm.bytedance.com, REJECT
+DOMAIN, dm.pstatp.com, REJECT
+DOMAIN, dm.toutiao.com, REJECT
+DOMAIN, log.snssdk.com, REJECT
+DOMAIN, s3a.pstatp.com, REJECT
+DOMAIN, sdfp.snssdk.com, REJECT
+DOMAIN, tosv.boe.byted.org, REJECT
+DOMAIN, tosv.byted.org, REJECT
+DOMAIN, extlog.snssdk.com, REJECT
+DOMAIN, mssdk-bu.bytedance.com, REJECT
+DOMAIN, toblog.ctobsnssdk.com, REJECT
+DOMAIN, mssdk.volces.com, REJECT
+DOMAIN, pangolin.snssdk.com, REJECT
+DOMAIN, gromore.pangolin-sdk-toutiao.com, REJECT
+DOMAIN, ether-pack.pangolin-sdk-toutiao.com, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, api-access.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, log-api.pangolin-sdk-toutiao, REJECT
+DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, video-cn.snssdk.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+#快手联盟 - 广告服务商
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+#上海倍孜
+DOMAIN, sdk.beizi.biz, REJECT
+#百度联盟 - 广告服务商
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+#腾讯优量汇 - 广告服务商
+DOMAIN, ios.bugly.qq.com, REJECT
+DOMAIN, sdk.e.qq.com, REJECT
+DOMAIN-SUFFIX, ugdtimg.com, REJECT
+#DOMAIN, adsmind.ugdtimg.com, REJECT
+#DOMAIN, pgdt.ugdtimg.com, REJECT
+DOMAIN-SUFFIX, gdtimg.com, REJECT
+#DOMAIN, qzs.gdtimg.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+#DOMAIN, mi.gdt.qq.com, REJECT
+#DOMAIN, win.gdt.qq.com, REJECT
+#DOMAIN, v2.gdt.qq.com, REJECT
+#App全渠道统计
+DOMAIN-SUFFIX, openinstall.io, REJECT
+#个推
+DOMAIN, zxid-m.mobileservice.cn, REJECT
+#友盟
+DOMAIN, cnlogs.umeng.com, REJECT
+DOMAIN, errlog.umeng.com, REJECT
+DOMAIN, errnewlog.umeng.com, REJECT
+DOMAIN, ucc.umeng.com, REJECT
+DOMAIN, ulogs.umeng.com, REJECT
+DOMAIN, utoken.umeng.com, REJECT
+
+# > 汽车之家去广告
+#拦截HTTPDNS
+IP-CIDR, 119.29.29.98/32, REJECT, no-resolve
+IP-CIDR, 119.29.29.99/32, REJECT, no-resolve
+URL-REGEX, ^http:\/\/182\.254\.116\.116\/d, REJECT
+DOMAIN, adproxy.autohome.com.cn, REJECT
+
+# > 七猫小说去广告
+DOMAIN, cdn-ad.wtzw.com, REJECT
+DOMAIN, cdn-new-ad.wtzw.com, REJECT
+DOMAIN-SUFFIX, gdt.qq.com, REJECT
+
+# > 什么值得买去广告 
+DOMAIN, aaid.uyunad.com, REJECT
+DOMAIN, acs4baichuan.m.taobao.com, REJECT
+DOMAIN, adashxgc.ut.taobao.com, REJECT
+DOMAIN, analytics-api.smzdm.com, REJECT
+DOMAIN, baichuan-sdk.alicdn.com, REJECT
+DOMAIN, dgstatic.jd.com, REJECT
+DOMAIN, msg.umengcloud.com, REJECT
+DOMAIN, sec.umeng.com, REJECT
+DOMAIN, ulogs.umeng.com, REJECT
+DOMAIN, ynuf.aliapp.org, REJECT
+
+# > 网易新闻去广告
+DOMAIN, nex.163.com, DIRECT
+DOMAIN, gw.m.163.com, DIRECT
+
+[Rewrite]
+# > 彩云 2024-09-05 10:51:41 hostname = biz.cyapi.cn, starplucker.cyapi.cn, api.caiyunapp.com, cdn-w.caiyunapp.com
+^https:\/\/biz\.cyapi\.cn\/(p\/v1\/entries|p\/v1\/trial_card\/info|v2\/product) reject-dict
+^https:\/\/starplucker\.cyapi\.cn\/v3\/(config\/cypage\/\w+\/conditions|notification\/message_center|operation\/homefeatures) reject-dict
+
+# > 滴滴出行 2024-09-08 22:05:03 hostname = common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/xpget reject-dict
+^https:\/\/ct\.xiaojukeji\.com\/agent\/v3\/feeds reject-dict
+^https:\/\/daijia\.kuaidadi\.com\/gateway reject-dict
+^https:\/\/freight\.xiaojukeji\.com\/gateway reject-dict
+^https:\/\/res\.xiaojukeji\.com\/resapi\/activity\/mget reject-dict
+^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast reject-dict
+^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf reject-dict
+
+# > 酷狗 2024-07-25 00:46:39 hostname = gateway.kugou.com, fx.service.kugou.com, hwstore.kugou.com, ep.kugou.com, gatewayretry.kugou.com, gzacshow.kugou.com, m1fxgroup.kugou.com
+^https:\/\/fx\.service\.kugou\.com\/mfx-kugoulive\/ad\/ reject-dict
+^https:\/\/gateway(retry)?\.kugou\.com\/adp\/ad\/ reject-dict
+^https:\/\/gateway(retry)?\.kugou\.com\/ads\.gateway\/ reject-dict
+#我的 - 关注 - 发现更多动态
+^https:\/\/gateway(retry)?\.kugou\.com\/v\d\/feeds\/follow_feed_fallback reject-dict
+#任务广告
+^https:\/\/gateway(retry)?\.kugou\.com\/mstc\/musicsymbol\/v\d\/system\/profile reject-dict
+#搜索填充词
+^https:\/\/gateway(retry)?\.kugou\.com\/searchnofocus\/v\d\/search_no_focus_word reject-dict
+#播放页顶部气泡
+^https:\/\/gateway(retry)?\.kugou\.com\/adp\/bubble\/v\d\/song_play reject-dict
+#歌曲评论 - 与歌手有关的回答
+^https:\/\/gateway(retry)?\.kugou\.com\/singerdiscuss\/v\d\/entrance\/comment reject-dict
+^https:\/\/gateway(retry)?\.kugou\.com\/r\/v\d\/general\/putin\/midad reject-dict
+#各类横幅推广
+^https:\/\/gateway(retry)?\.kugou\.com\/ocean\/v\d\/sound\/banner reject-dict
+#热搜主播
+^https:\/\/gzacshow\.kugou\.com\/mfanxing-home\/cdn\/room\/index\/list_v2 reject-dict
+#直播推荐 - 主播修仙中
+^https:\/\/gzacshow\.kugou\.com\/mfx-rt-show\/cdn\/mo\/show\/headline reject-dict
+#歌房弹窗
+^https:\/\/m1fxgroup\.kugou\.com\/fxsing\/yqc\/alongInfo\/getUserAlongInfo reject-dict
+#酷狗商城 - 文字广告
+^https:\/\/hwstore\.kugou\.com\/v\d\/get_store_data reject-dict
+#唱片店 - 文字广告
+^https:\/\/ep\.kugou\.com\/v\d\/album_shop\/get_entrance_info reject-dict
+
+# > 酷我 2024-07-18 05:09:37 hostname = appi.kuwo.cn, mc.tencentmusic.com, vip*.kuwo.cn, tingshu.kuwo.cn
+#首页 - 推广语
+^https:\/\/vip\d\.kuwo\.cn\/commercia\/vipconf\/projectPage\/getPageContent reject-dict
+^https:\/\/tingshu\.kuwo\.cn\/v2\/api\/pay\/user\/info reject-dict
+#我的页面横幅
+^https:\/\/appi\.kuwo\.cn\/kuwopay\/personal\/cells reject-dict
+
+# > 夸克 2024-07-14 22:55:24 hostname = huichuan.sm.cn, stars.shuqireader.com, open-cms-api.quark.cn
+#小说底部文案广告
+^https:\/\/huichuan\.sm\.cn\/nativead$ reject
+^https:\/\/stars\.shuqireader\.com\/kkios\/render\/load\/resource\/appConfig$ reject-dict
+
+# > keep去广告 2024-09-06 21:02:25 hostname = api.gotokeep.com, kad.gotokeep.com
+#搜索填充词
+^https:\/\/api\.gotokeep\.com\/search\/v6\/default\/keyword\/list reject-dict
+#关注 - 关注推荐
+^https:\/\/api\.gotokeep\.com\/twins\/v4\/feed\/followPage response-body-json-replace data {}
+#信息流推广
+^https:\/\/kad\.gotokeep\.com\/op-engine-webapp\/v1\/ad reject-dict
+#文章相关推荐
+^https:\/\/api\.gotokeep\.com\/twins\/v4\/feed\/entryDetail response-body-json-replace data {}
+#弹窗
+^https:\/\/api\.gotokeep\.com\/guide-webapp\/v1\/popup\/getPopUp reject-dict
+
+# > 快递100去广告 2024-09-23 13:17:28 hostname = p.kuaidi100.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com
+#广告配置
+^https?:\/\/p\.kuaidi100\.com\/mobile\/mobileapi\.do$ response-body-json-del adsplash adIsConsumable adProductId nologin_tips index_banner me_banner index_banner_shadow adshongbao adsapp_homepage_ticket_pop adsoptimizationsend adsapp_activity_ad_array adbanner adposition adShowAgainTime
+#精简首页
+^https?:\/\/p\.kuaidi100\.com\/apicenter\/xcx\.dox response-body-json-del data.secondMenuList
+#弹窗和横幅推广
+^https?:\/\/p\.kuaidi100\.com\/advertisement\/ reject-dict
+^https?:\/\/p\.kuaidi100\.com\/e-commerce\/act\/actInfo\? reject-dict
+^https?:\/\/p\.kuaidi100\.com\/apicenter\/card\.dox reject-dict
+#拼多多广告平台
+^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
+^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union reject
+^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
+^https:\/\/images\.pinduoduo\.com\/marketing_api\/ reject
+
+# > 起点读书去广告  2024-07-07 15:54:03 hostname = magev6.if.qidian.com
+
+# > 网易邮箱大师去广告 2024-10-04 03:32:32 hostname = appconf.mail.163.com, dashi.163.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com
+# 拦截HTTPDNS
+^https:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/http\/urlConfig\.do$ reject-dict
+#精简我的页面
+^https:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/page\/v2\/conf\.do$ response-body-json-del data.functionOperatorInfoList data.memberOperator data.activityTabInfoList
+#精简侧拉抽屉
+^https:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/config\/function\.do$ response-body-json-del data.config[39].result.tools[2]
+#签到任务
+^https:\/\/dashi\.163\.com\/task-center-api\/fapi\/task\/list$ reject-dict
+#扩容推广
+^https:\/\/appconf\.mail\.163\.com\/mailoperating\/mailmaster\/api\/operator\/get$ reject-dict
+#拼多多广告平台
+^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
+^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union reject
+^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
+^https:\/\/images\.pinduoduo\.com\/marketing_api\/ reject
+
+# > 全民k歌 2024-09-08 16:16:45 hostname = wallpaper-1258344696.file.myqcloud.com, amsweb-cdn-*-1258344696.file.myqcloud.com, wnsaviator.kg.qq.com
+^https:\/\/wallpaper-\d+\.file\.myqcloud\.com\/dsl\/ reject-dict
+^https?:\/\/wallpaper-\d+\.file\.myqcloud\.com\/hikari\/ reject-dict
+^https:\/\/amsweb-cdn-\S+-\d+\.file\.myqcloud\.com\/video\/ad_profile\/ reject-dict
+# 右下角轮播动画
+^https:\/\/wnsaviator\.kg\.qq\.com\/wnsaviator\/api\/v1\/transMerge\?_webcgikey=get_activity_entry$ reject-dict
+
+# > 美颜相机 2024-09-07 23:08:09 hostname = api.meiyan.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com
+#首页轮播图
+^https:\/\/api\.meiyan\.com\/operation\/home_banner\.json\? reject-dict
+#弹窗和首页红点词
+^https:\/\/api\.meiyan\.com\/vip\/permission_update_popup\.json\? reject-dict
+^https:\/\/api\.meiyan\.com\/operation\/get_config\.json\? response-body-json-del response.time_limit response.bubble response.person_center
+^https:\/\/api\.meiyan\.com\/operation\/get_config\.json\? response-body-json-replace response.function_pop.meiyan_style.is_pop false response.onoff.vip_half_window_exit_remain_popup.open 0 response.onoff.vip_home_exit_remain_popup 0
+#拼多多广告平台
+^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ reject
+^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union reject
+^https:\/\/images\.pinduoduo\.com\/mrk\/ reject
+^https:\/\/images\.pinduoduo\.com\/marketing_api\/ reject
+
+# > 美图秀秀 2024-09-01 00:25:23 hostname = api.xiuxiu.meitu.com, tool.xiuxiu.meitu.com, api.posters.meitu.com
+#精简应用配置 - 福利严选beauty / 开屏广告data.splashControl
+^https:\/\/api\.xiuxiu\.meitu\.com\/v\d\/common\/config\.json response-body-json-del data.home_top_live data.splashControl
+#订阅弹窗
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/v\d\/vip\/sub_popup\.json reject-dict
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/\/v\d\/vip\/popup_show\.json reject-dict
+^https:\/\/api\.posters\.meitu\.com\/homepage\/leaflets\.json\? reject-dict
+#首页轮播图
+#^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/v\d\/tool\/common\/home_background\.json reject-dict
+#首页右上角推广图标
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/v\d\/tool\/common\/operation_icon\.json response-body-json-del data.home_top_icon
+#设计室 - 右上角VIP图标data.vip
+^https:\/\/api\.posters\.meitu\.com\/common\/init\.json response-body-json-del data.vip
+#精简我的页面 - 有奖调研data[0].items[10] / 进入钱包data[1].scheme data[1].wallet_title / 借钱 备用金data[1].items[1] / 茉颜data[2].items[1]
+^https:\/\/(api|tool)\.xiuxiu\.meitu\.com\/v\d\/tool\/common\/home\.json response-body-json-del data[0].items[10] data[1].scheme data[1].wallet_title data[1].items[1] data[1].items[1] data[2].items[1]
+
+# > 斗鱼去广告 2024-09-28 01:25:08 hostname = rtbapi.douyucdn.cn, apiv2.douyucdn.cn, venus.douyucdn.cn
+#开屏广告
+^https:\/\/rtbapi\.douyucdn\.cn\/japi\/sign\/app\/getinfo reject-dict
+#首页直播间悬浮窗 - 直播间悬浮窗data.pendant_a / 直播间宝箱data.entrance_d
+^https:\/\/apiv2\.douyucdn\.cn\/japi\/entrance\/roomRes\/nc\/m\/list response-body-json-del data.pendant_a data.entrance_d
+#修改应用配置 - 大神游戏陪玩greatGodGameSitterSwitch / 关注更多主播入口followMoreAnchorEntrance / 直播横幅sdklivebanner / 首页活动悬浮窗homeActFloatSwitch / 带货开关bringGoodsSwitch / QQ游戏qqGameSwitch
+^https:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config response-body-json-replace greatGodGameSitterSwitch 0 followMoreAnchorEntrance 0 sdklivebanner 0 homeActFloatSwitch 0 bringGoodsSwitch 0 qqGameSwitch 0
+
+# >乐播投屏去广告 2024-07-11 02:43:39 hostname = saas.hpplay.cn
+#首页 - 弹窗
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_home_pop_up reject-dict
+#首页 - 顶部横幅推广
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_home_tips reject-dict
+#首页 - 底部横幅推广
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_index_operate2 reject-dict
+#首页 - 全网热投榜
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-rabbit\/app-card\/list reject-dict
+#我的页面 - 横幅推广
+^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app-user-banner reject-dict
+
+# >迅雷去广告 2024-07-14 20:23:48 hostname = api-shoulei-ssl.xunlei.com, conf-m-ssl.xunlei.com
+#首页 - 横幅推广
+^https:\/\/api-shoulei-ssl\.xunlei\.com\/flowhub\/v1\/slots:batchGet$ reject-dict
+
+# > Soul去广告 2024-10-15 10:53:02 hostname = api*.soulapp.cn, gateway-mobile-gray.soulapp.cn, post.soulapp.cn, ssp.soulapp.cn
+#开屏广告
+^https:\/\/ssp\.soulapp\.cn\/api\/q reject-dict
+^https:\/\/chat-live\.soulapp\.cn\/live\/planet\/recListV2 reject-200
+
+# > 虎扑去广告 2024-07-24 14:40:03 hostname = games.mobileapi.hupu.com, fairy.mobileapi.hupu.com, bbs.mobileapi.hupu.com, goblin.hupu.com
+^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/bplapi\/reddot\/v1\/app\/getReddot reject-dict
+^https:\/\/bbs\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/(bbsallapi\/tag\/v1\/heatTag|bbsrankapi\/v1\/rating\/list) reject-dict
+^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/search\/v2\/(hintkeylist|hotkeylist) reject-dict
+^https:\/\/goblin\.hupu\.com\/\d\/\d\.\d\.\d+\/interfaceAd\/getOther\/v\d reject-dict
+^https:\/\/goblin\.hupu\.com\/\d\/\d\.\d\.\d+\/interfaceAd\/getOther\/batch reject-dict
+^https:\/\/fairy\.mobileapi\.hupu\.com\/gallery\/getmod2 reject-200
+^https:\/\/games\.mobileapi\.hupu\.com\/3\/8\.0\.86\/bplcommentapi\/bpl\/score_tab\/groups reject-dict
+^https:\/\/games\.mobileapi\.hupu\.com\/3\/8\.0\.86\/bplapi\/banner\/getLocationBanners reject-dict
+
+# > 猫耳FM去广告 2024-08-13 19:45:41 hostname = app.missevan.com, fm.missevan.com
+#开屏广告
+^https:\/\/app\.missevan\.com\/site\/launch\? response-body-json-del info
+#首页 - 直播 - 热门 - 主播横幅推广
+^https:\/\/fm\.missevan\.com\/api\/v2\/meta\/banner$ response-body-json-del info
+#首页 - 推荐 - 热门搜索词、轮播图推广
+^https:\/\/app\.missevan\.com\/site\/get-top$ response-body-json-del info.extra_banners
+#首页 - 推荐 - 主播推荐列表
+^https:\/\/fm\.missevan\.com\/api\/v2\/recommended\/top$ response-body-json-del info
+#首页 - 广播剧 - 轮播图推广、热门搜索词
+^https:\/\/app\.missevan\.com\/drama\/catalog-homepage\? response-body-json-del info.extra_banners
+#首页 - 声音恋人 - 轮播图推广、热门搜索词
+^https:\/\/app\.missevan\.com\/catalog\/sound-homepage\? response-body-json-del info.extra_banners
+#播放器 - 主播推荐
+^https:\/\/fm\.missevan\.com\/api\/v2\/chatroom\/sound\/recommend\? response-body-json-del info
+#青少年模式
+^https:\/\/app\.missevan\.com\/site\/config$ response-body-json-del info.teenager_popup_mode
+
+# > YY去广告 2024-09-08 13:09:26 hostname = yyapp-act-entrance.yy.com, yyapp-fastnet.yy.com, personal-center.yy.com, tab.yy.com
+#首页 - 弹窗
+^https:\/\/yyapp-act-entrance\.yy\.com\/entrance\/list\? reject-dict
+#底栏
+^https:\/\/tab\.yy\.com\/tabs\? response-body-json-del data.tabs[0]
+
+# > 驾校一点通去广告 2024-08-28 09:31:22 hostname = richmanrules.ksedt.com, gouche.ksedt.com, muses.ksedt.com, op.ksedt.com, api.ksedt.com
+#广告配置
+^https:\/\/richmanrules\.ksedt\.com\/serverConfig\/3\/adConfig\.json reject-dict
+#弹窗广告
+^https:\/\/gouche\.ksedt\.com\/config\/popup\/info$ reject-dict
+#直播课
+#^https:\/\/muses\.ksedt\.com\/jxedtLiving\/ reject
+#考试 - 信息流广告、右上角免费领秘籍入口
+^https:\/\/richmanrules\.ksedt\.com\/intellectWaterfallBidding\/find$ reject-dict
+#考试 - 满分通关技巧直播课入口
+^https:\/\/op\.ksedt\.com\/jxedtLive\/liveIntroduceResource reject-dict
+#我的页面广告
+^https:\/\/richmanrules\.ksedt\.com\/intellectWaterfall\/find$ reject-dict
+#清理应用配置 - 首页广告result.homead / 推广页面result.h5_promotion_page / 广告间隔配置result.advert_interval / 二手车信息流result.abtest_h5url / 懂车帝信息流result.launchApp / 购车页面配置result.goucheConfig / 购车页面result.gouche / 直播页面配置result.mainLiveConfig / 发现result.discover / 广告SDK视频result.adSdkSwitch4testPointVideo / 广告SDK视频result.adSdkSwitch4simulationExam / 考试页面加载广告切换result.examPageLoadADSwitch
+http-response ^https:\/\/api\.ksedt\.com\/api\/config\/ response-body-json-del result.homead result.h5_promotion_page result.advert_interval result.abtest_h5url result.launchApp result.goucheConfig result.gouche result.mainLiveConfig result.discover result.adSdkSwitch4testPointVideo result.adSdkSwitch4simulationExam result.examPageLoadADSwitch
+
+# > 驾考宝典去广告 2024-07-16 19:38:36 hostname = jiaxiao-awd.kakamobi.cn, cheyouquan.kakamobi.com, swallow.kakamobi.cn, monkey.kakamobi.cn, mcbd.maiche.com, jiakao-misc.kakamobi.cn, squirrel.kakamobi.cn, scs.kakamobi.cn
+#广告配置
+^https:\/\/scs\.kakamobi\.cn\/api\/open\/v3\/advert-sdk\/ reject-dict
+#广告横幅
+^https:\/\/cheyouquan\.kakamobi\.com\/api\/open\/group\/recommend-subscribe-tag\.htm reject-dict
+#应用配置 - 悬浮窗
+^https:\/\/swallow\.kakamobi\.cn\/api\/open\/config\/get-config\.htm reject-dict
+#悬浮窗
+^https:\/\/monkey\.kakamobi\.cn\/api\/open\/live\/get-recommend-live-protocol\.htm reject-dict
+#新用户弹窗
+^https:\/\/jiaxiao-awd\.kakamobi\.cn\/api\/h5\/v4\/home-lead-advertise\/abtest\.htm reject-dict
+#买车页面弹窗
+^https:\/\/mcbd\.maiche\.com\/api\/open\/v3\/user\/get-popup-window\.htm reject-dict
+#我的页面 - 精选服务
+^https:\/\/jiakao-misc\.kakamobi\.cn\/api\/open\/my-tab-config\/selection-list\.htm reject-dict
+#我的页面 - 横幅
+^https:\/\/jiakao-misc\.kakamobi\.cn\/api\/open\/my-tab-config\/banner-list\.htm reject-dict
+^https:\/\/squirrel\.kakamobi\.cn\/api\/open\/recommend-goods\/get-my-page-banner\.htm reject-dict
+#买车页面广告
+^https:\/\/mcbd\.maiche\.com\/api\/open\/v2\/jiakao-business\/get-naben-advert\.htm reject-dict
+#其他广告
+^https:\/\/monkey\.kakamobi\.cn\/api\/open\/live-room\/get-resource\.htm reject-dict
+
+# > 汽车之家去广告 2024-07-17 18:20:06 hostname = a.athm.cn, adproxy.autohome.com.cn, apiautoappusc.che168.com, autoapi.autohome.com.cn, cars.app.autohome.com.cn, clientlive.api.autohome.com.cn, club.app.autohome.com.cn, dealer.m.autohome.com.cn, maam.pingan.com.cn, mobile.app.autohome.com.cn, news.app.autohome.com.cn, pcmx.autohome.com.cn
+#我的页面 - 广告横幅
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/findEquitysV5 reject-dict
+#我的页面 - 我的车库
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/mycardv6 reject-dict
+#我的页面 - 去问问
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/chat\/gse\/recquery reject-dict
+#我的页面 - 福利中心超级低价
+^https:\/\/autoapi\.autohome\.com\.cn\/ypttd\/yjc\/web\/mkgt\/act\/seckillInfo reject-dict
+#我的页面 - 热门活动
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/gethotactcards reject-dict
+#我的页面 - 特惠洗车、到站加油
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/extendedcards reject-dict
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getwashcarlist reject-dict
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getdealertab reject-dict
+#我的页面 - 加油站列表
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getoillist reject-dict
+#开屏广告
+^https:\/\/pcmx\.autohome\.com\.cn\/queryCreativeList reject-dict
+#看看期货
+^https:\/\/maam\.pingan\.com\.cn\/maam\/buoy\/getBuoyList\.do reject-dict
+#文末广告
+^https:\/\/news\.app\.autohome\.com\.cn\/cont_v\d+(?:\.\d+){2}\/api\/article\/extenddata reject-dict
+#文末广告、信息流广告、评论区广告
+^https:\/\/adproxy\.autohome\.com\.cn\/AdvertiseService\/AppHandler\.ashx reject-dict
+#首页 - 问答 - 推广横幅
+^https:\/\/club\.app\.autohome\.com\.cn\/club_v\d+(?:\.\d+){2}\/club\/channelqa\/header reject-dict
+#首页 - 本地 - 购车优惠
+^https:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=super\.list reject-dict
+#首页 - 本地 - VR看车
+^https:\/\/autoapi\.autohome\.com\.cn\/arvr-dealercloud-api\/online\/aggregation\/exhibitionList reject-dict
+#首页 - 本地 - 购车红包
+^https:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=vrcore\.list reject-dict
+#首页 - 看经销商说车抢优惠
+^https:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=platform\.search reject-dict
+#选车 - 新能源报价页面直播内容
+^https:\/\/a\.athm\.cn\/clientlive\.api\.autohome\.com\.cn\/api\/live\/getserieswindowsinfo reject-dict
+#选车 - 买车 - 竖版焦点图广告
+#^https:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=dealerlq\.getpics&picType=195 reject-dict
+
+# > 七猫小说去广告 2024-09-29 12:44:08 hostname = api-cfg.wtzw.com, sf3-fe-tos.pglstatp-toutiao.com, api-bc.wtzw.com, api-gw.wtzw.com, cdn.wtzw.com
+#开屏广告
+^https:\/\/api-cfg\.wtzw\.com\/v\d\/splash\/ reject-dict
+#福利中心
+#^https:\/\/xiaoshuo\.wtzw\.com\/app-h5\/freebook\/welfare-center reject
+#腾格尔打卡喵喵歌
+^https:\/\/api-bc\.wtzw\.com\/api\/v4\/search\/dispose reject-dict
+#^https:\/\/xiaoshuo\.wtzw\.com\/api\/v2\/init\/other-data reject-dict
+#必读榜弹窗
+^https:\/\/api-bc\.wtzw\.com\/api\/v\d\/book-store\/config reject-dict
+#推荐书籍弹窗
+^https:\/\/api-bc\.wtzw\.com\/api\/v\d\/book-store\/push-book reject-dict
+#有声阅读界面广告横幅
+^https:\/\/api-bc\.wtzw\.com\/api\/v\d\/operation reject-dict
+#头条广告SDK
+^https:\/\/sf3-fe-tos\.pglstatp-toutiao\.com\/obj\/ad-pattern\/ reject
+#听书赚金币
+^https:\/\/api-gw\.wtzw\.com\/welf\/app\/v\d\/task\/red-packet reject-dict
+#正文底部推广
+^https:\/\/cdn\.wtzw\.com\/bookimg\/free\/api\/v\d\/reader\/reader-copy-paragraph-all\.json reject-dict
+#底栏提现红点
+#^https:\/\/xiaoshuo\.wtzw\.com\/api\/v\d\/user\/red-point reject
+#其他广告
+^https:\/\/api-cfg\.wtzw\.com\/v\d\/reward\/ reject
+^https:\/\/api-cfg\.wtzw\.com\/v\d\/adv\/ reject
+^https:\/\/api-cfg\.wtzw\.com\/v\d\/offline-adv\/index reject-dict
+^https:\/\/api-cfg\.wtzw\.com\/v\d\/operation\/index\?ad_personal_switch reject-dict
+^https:\/\/xiaoshuo\.wtzw\.com\/api\/v\d\/withdraw\/init reject-dict
+#精简我的页面
+^https:\/\/xiaoshuo\.wtzw\.com\/api\/v\d\/user\/my-center\? response-body-json-del data.func_area[1]  data.func_area[2]
+
+# > 什么值得买 2024-09-08 20:59:02 hostname = haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com, s3.zdmimg.com
+^https:\/\/haojia\.m\.smzdm\.com\/detail_modul\/(other_modul|wiki_related_modul)|^https:\/\/s3\.zdmimg\.com\/third\/index|^https:\/\/app-api\.smzdm\.com\/util\/loading reject-dict
+
+# > 酷安 2023-11-15 17:20:55 hostname = api.coolapk.com
+^https:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch reject-dict
+
+# > it之家去广告 2024-08-11 12:57:27 hostname = napi.ithome.com, api.zuihuimai.com, dat.ruanmei.com
+^https?:\/\/api\.zuihuimai\.com\/static\/.*\/hongbao reject
+^https?:\/\/dat\.ruanmei\.com\/ithome\/money\/acd\.json$ reject
+
+# > 网易新闻去广告 2024-01-12 08:50:09 hostname = nex.163.com, interface.music.163.com, c.m.163.com, client.mail.163.com, g1.163.com, support.you.163.com, interface3?.music.163.com, gw.m.163.com
+^https?:\/\/interface\.music\.163\.com\/eapi\/ad reject
+^https?:\/\/c\.m\.163\.com\/nc\/gl\/ reject
+^https?:\/\/client\.mail\.163\.com\/apptrack\/confinfo\/searchMultiAds reject
+^https?:\/\/g1\.163\.com\/madfeedback reject
+^https?:\/\/interface\.music\.163\.com\/eapi\/ad\/ reject
+^https?:\/\/support\.you\.163\.com\/xhr\/boot\/getBootMedia\.json reject
+^https?:\/\/interface3?\.music\.163\.com/eapi/(ad|abtest|sp|hot|store|search/(specialkeyword|defaultkeyword|hot)) reject
+
+[Script]
+# > 彩云
+http-response ^https:\/\/(wrapper\.cyapi\.cn|api\.caiyunapp\.com|cdn-w\.caiyunapp\.com)\/v1\/activity\? script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/ColorfulClouds_remove_ads.js, requires-body = true, tag = 彩云天气去广告
+
+# > 滴滴出行
+http-response ^https:\/\/common\.diditaxi\.com\.cn\/common\/v\d\/usercenter\/me script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Didichuxing.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/core script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Didichuxing.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/api\.udache\.com\/gulfstream\/pre-sale\/v1\/other\/pGetSceneList script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Didichuxing.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/conf\.diditaxi\.com\.cn\/ota\/na\/yuantu\/infoList script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Didichuxing.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/api\.udache\.com\/gulfstream\/passenger-center\/v2\/other\/pInTripLayout script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Didichuxing.js, requires-body = true, tag = 移除广告
+
+# > 酷狗 精简顶部标签
+http-response ^https:\/\/gateway(retry)?\.kugou\.com\/ocean\/v\d\/tab\/list_v\d script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/KuGou_remove_ads.js, requires-body = true, tag = 精简顶部标签
+
+# > 酷我 移除听书页面广告
+http-response ^http:\/\/wapi\.kuwo\.cn\/openapi\/v\d\/tingshu\/index\/radio script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Kuwo_remove_ads.js, requires-body = true, tag = 移除听书页面广告
+
+# > 夸克 精简我的页面
+http-response ^https:\/\/open-cms-api\.quark\.cn\/open-cms script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/QuarkBrowser_remove_ads.js, requires-body = true, tag = 精简我的页面
+
+# > keep去广告
+#首页 - 活动标签
+http-response ^https:\/\/api\.gotokeep\.com\/config\/v3\/basic script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Keep_remove_ads.js, requires-body = true, tag = 移除首页活动标签
+
+# > 起点读书去广告
+http-response ^https:\/\/magev6\.if\.qidian\.com\/argus\/api\/(v4\/client\/getsplashscreen|v2\/(deeplink\/geturl|dailyrecommend\/getdailyrecommend)|v1\/(client\/getconf$|bookshelf\/getHoverAdv|adv\/getadvlistbatch\?positions=iOS_tab)) script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/QiDian_remove_ads.js, requires-body = true, tag = 起点读书去广告
+
+# > 美颜相机
+# 首页功能栏目和美颜推荐
+http-response ^https:\/\/api\.meiyan\.com\/operation\/home\.json\? script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/MeituMYXJ_remove_ads.js, requires-body = true, tag = 精简首页功能栏目并移除美颜推荐
+
+# > 斗鱼去广告
+#首页轮播图和视频流广告
+http-response ^https:\/\/apiv2\.douyucdn\.cn\/mgapi\/livenc\/home\/getRecV3 script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Douyu_remove_ads.js, requires-body = true, tag = 移除首页轮播图和视频流广告
+
+# > 乐播投屏去广告
+#移除底栏视频标签
+http-response ^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_tab_red_dot\?user-tag=1$ script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/TV_Assistant_remove_ads.js, requires-body = true, tag = 移除底栏视频标签
+
+# > 迅雷去广告
+#精简我的页面
+http-response ^https:\/\/conf-m-ssl\.xunlei\.com\/external\/ script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/XunLei_remove_ads.js, requires-body = true, tag = 精简我的页面
+
+# > Soul去广告
+http-response ^https:\/\/(?:api-\w+|chat-live|post)\.soulapp\.cn\/(?:chat\/limitInfo|chatroom\/chatClassifyRoomList|homepage\/diamond\/position\/info|v2\/post\/recSquare\/subTabs|v6\/planet\/config) script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/Soul_remove_ads.js, requires-body = true, tag = 移除Soul广告
+
+# > 虎扑去广告
+http-response ^https:\/\/fairy\.mobileapi\.hupu\.com\/mang\/preview\/banners script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/HUPU_remove_ads.js, requires-body = true, tag = 移除虎扑广告
+http-response ^https:\/\/bbs\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/bbsallapi\/lego\/data script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/HUPU_remove_ads.js, requires-body = true, tag = 移除虎扑广告
+http-response ^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/buffer\/hotList script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/HUPU_remove_ads.js, requires-body = true, tag = 移除虎扑广告
+http-response ^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/bplapi\/user\/v1\/more script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/HUPU_remove_ads.js, requires-body = true, tag = 移除虎扑广告
+
+# > 猫耳FM去广告
+#首页顶部入口
+http-response ^https:\/\/app\.missevan\.com\/site\/icons\? script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/CatEarFM_remove_ads.js, requires-body = true, tag = 精简首页顶部入口
+#发现页面 - 直播间、广播剧、免流服务
+http-response ^https:\/\/app\.missevan\.com\/discovery\/list$ script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/CatEarFM_remove_ads.js, requires-body = true, tag = 精简发现页面
+
+# > YY去广告
+#我的页面
+http-response ^https:\/\/personal-center\.yy\.com\/personalCenter\/list\? script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/YY_Voice_remove_ads.js, requires-body = true, tag = 精简我的页面
+
+# > 汽车之家去广告
+#首页 - 左上角以旧换新
+http-response ^https:\/\/news\.app\.autohome\.com\.cn\/news_v\d+(?:\.\d+){2}\/news\/homenavigation script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/AutoHome_remove_ads.js, requires-body = true, tag = 精简我的页面
+#我的页面 - 精简精选服务、全部服务、添加我的爱车领券、热门活动
+http-response ^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/((usercenter\/getservicecards)|(carcard\/allcard)|(carcard\/mycardv\d+)|(carcard\/cards)) script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/AutoHome_remove_ads.js, requires-body = true, tag = 精简我的页面
+#社区广场 - 广告轮播图
+http-response ^https:\/\/(a\.athm\.cn\/)?club\.app\.autohome\.com\.cn\/club_v\d+(?:\.\d+){2}\/club\/index\/businessv\d+ script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/AutoHome_remove_ads.js, requires-body = true, tag = 社区广场去广告
+#选车 - 直播浮窗
+http-response ^https:\/\/(a\.athm\.cn\/)?cars\.app\.autohome\.com\.cn\/carstreaming\/selectcarportal\/reclist script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/AutoHome_remove_ads.js, requires-body = true, tag = 移除直播浮窗
+#选车 - 新车报价页面直播内容 - 无效
+http-response ^https:\/\/(a\.athm\.cn\/)?cars\.app\.autohome\.com\.cn\/carstreaming\/selectcarportal\/seriestopwithtagscard script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/AutoHome_remove_ads.js, requires-body = true, tag = 移除报价页面直播内容
+#二手车 - 竖版轮播图 - 无效
+http-response ^https:\/\/(a\.athm\.cn\/)?apiautoappusc\.che168\.com\/apic\/v\d+\/gethomepagefeed script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/AutoHome_remove_ads.js, requires-body = true, tag = 移除二手车竖版轮播图
+
+# > 什么值得买去广告
+http-response ^https:\/\/app-api\.smzdm\.com\/util\/loading  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/haojia-api\.smzdm\.com\/home\/list  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/app-api\.smzdm\.com\/util\/update  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/homepage-api\.smzdm\.com\/v3\/home  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/user-api\.smzdm\.com\/vip  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/user-api\.smzdm\.com\/vip\/bottom_card_list  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/article-api\.smzdm\.com\/publish\/get_bubble  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/qianbao\.smzdm\.com\/v\d\/app\/home  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/s3\.zdmimg\.com\/third\/index  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+http-response ^https:\/\/post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list  script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/smzdm_remove_ads.js, requires-body = true, tag = 移除广告
+
+# > 酷安去广告
+http-response ^https:\/\/api\.coolapk\.com\/v6\/feed\/(detail|replyList)\? script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/CoolApk_remove_ads.js, requires-body = true, tag = 移除酷安广告
+http-response ^https:\/\/api\.coolapk\.com\/v6\/main\/(dataList|indexV8|init) script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/CoolApk_remove_ads.js, requires-body = true, tag = 移除酷安广告
+http-response ^https:\/\/api\.coolapk\.com\/v6\/page\/dataList\? script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/CoolApk_remove_ads.js, requires-body = true, tag = 移除酷安广告
+
+# > it之家去广告
+http-response ^https:\/\/napi\.ithome\.com\/api\/(?:news\/index|topmenu\/getfeeds\?|api\/douyin\/GetLiveInfo) script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/IThome_remove_ads.js, requires-body = true, tag = IT之家去广告
+
+# > 网易新闻去广告
+http-response ^https:\/\/nex\.163\.com\/q script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/NeteaseNews_remove_ads.js, requires-body = true, tag = 移除网易新闻广告
+http-response ^https:\/\/gw\.m\.163\.com\/nc\/api\/v1\/feed\/dynamic\/headline-list\? script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/NeteaseNews_remove_ads.js, requires-body = true, tag = 移除网易新闻广告
+http-response ^https:\/\/gw\.m\.163\.com\/nc\/api\/v1\/search\/hot-word script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/NeteaseNews_remove_ads.js, requires-body = true, tag = 移除网易新闻广告
+
+[MitM]
+hostname = nex.163.com, interface.music.163.com, c.m.163.com, client.mail.163.com, g1.163.com, support.you.163.com, interface3?.music.163.com, gw.m.163.com, napi.ithome.com, api.zuihuimai.com, dat.ruanmei.com, api.coolapk.com, haojia-api.smzdm.com, homepage-api.smzdm.com, app-api.smzdm.com, user-api.smzdm.com, article-api.smzdm.com ,qianbao.smzdm.com, s3.zdmimg.com, api-cfg.wtzw.com, sf3-fe-tos.pglstatp-toutiao.com, api-bc.wtzw.com, api-gw.wtzw.com, cdn.wtzw.com, a.athm.cn, adproxy.autohome.com.cn, apiautoappusc.che168.com, autoapi.autohome.com.cn, cars.app.autohome.com.cn, clientlive.api.autohome.com.cn, club.app.autohome.com.cn, dealer.m.autohome.com.cn, maam.pingan.com.cn, mobile.app.autohome.com.cn, news.app.autohome.com.cn, pcmx.autohome.com.cn,jiaxiao-awd.kakamobi.cn, cheyouquan.kakamobi.com, swallow.kakamobi.cn, monkey.kakamobi.cn, mcbd.maiche.com, jiakao-misc.kakamobi.cn, squirrel.kakamobi.cn, scs.kakamobi.cn, richmanrules.ksedt.com, gouche.ksedt.com, muses.ksedt.com, op.ksedt.com, api.ksedt.com, yyapp-act-entrance.yy.com, yyapp-fastnet.yy.com, personal-center.yy.com, tab.yy.com, app.missevan.com, fm.missevan.com, games.mobileapi.hupu.com, fairy.mobileapi.hupu.com, bbs.mobileapi.hupu.com, goblin.hupu.com, api*.soulapp.cn, gateway-mobile-gray.soulapp.cn, post.soulapp.cn, ssp.soulapp.cn, api-shoulei-ssl.xunlei.com, conf-m-ssl.xunlei.com, saas.hpplay.cn, rtbapi.douyucdn.cn, apiv2.douyucdn.cn, venus.douyucdn.cn, api.xiuxiu.meitu.com, tool.xiuxiu.meitu.com, api.posters.meitu.com ,api.meiyan.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com,wallpaper-1258344696.file.myqcloud.com, amsweb-cdn-*-1258344696.file.myqcloud.com, wnsaviator.kg.qq.com ,appconf.mail.163.com, dashi.163.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com ,magev6.if.qidian.com,biz.cyapi.cn, starplucker.cyapi.cn, api.caiyunapp.com, cdn-w.caiyunapp.com, common.diditaxi.com.cn, freight.xiaojukeji.com, daijia.kuaidadi.com, ct.xiaojukeji.com, res.xiaojukeji.com, conf.diditaxi.com.cn ,api.udache.com ,123.207.209.*, 112.53.55.225,120.241.142.*,120.241.143.*,116.85.2.*, 116.85.3.*, 139.199.240.84,gateway.kugou.com, fx.service.kugou.com, hwstore.kugou.com, ep.kugou.com, gatewayretry.kugou.com, gzacshow.kugou.com, m1fxgroup.kugou.com,appi.kuwo.cn, mc.tencentmusic.com, vip*.kuwo.cn, tingshu.kuwo.cn, huichuan.sm.cn, stars.shuqireader.com, open-cms-api.quark.cn, api.gotokeep.com, kad.gotokeep.com, p.kuaidi100.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com
