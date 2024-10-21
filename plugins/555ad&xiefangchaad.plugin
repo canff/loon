@@ -14,8 +14,6 @@
 ^https:\/\/app-v1\.ecoliving168\.com\/api\/v1\/advert\/config reject-dict
 ^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/.*?\/v\d\/(version$|notice\?|top_notice\?|advert\?position=[^2]+) url reject-200
 [Script]
-# 移除横幅广告
-http-response ^https:\/\/app-v1\.ecoliving168\.com\/api\/v1\/movie\/index_recommend\? script-path = https://gitlab.com/lodepuly/vpn_tool/-/raw/master/Resource/Script/555DY/555DY_remove_ads.js, requires-body = true, tag = 移除横幅广告
 # > 555
 http-response ^https?:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,3}(:\d+)?\/api\/v\d\/movie\/index_recommend script-path = https://github.com/ddgksf2013/Scripts/raw/master/555Ad.js, requires-body = true, tag = 移除开屏广告
 [MitM]
