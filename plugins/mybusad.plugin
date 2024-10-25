@@ -1,6 +1,6 @@
 #!name = 掌上公交去广告
 #!desc = 移除mybus开屏广告和小程序广告，支持iPadOS。
-#!author = 墨鱼
+#!author = 
 #!tag = 去广告
 #!system = iOS, iPadOS
 #!system_version = 
@@ -10,11 +10,12 @@
 
 [Rewrite]
 # 我的横幅广告
-^https?:\/\/quanguo\.mygolbs\.com:8081\/MyBusServer\/servlet\/MyGoServer\.HttpPool\.HttpHandlerServlet url reject-200
+^https?:\/\/quanguo\.mygolbs\.com:8081\/MyBusServer\/servlet\/MyGoServer\.HttpPool\.HttpHandlerServlet reject-200
 
 [Script]
 # 小程序广告
-http-response ^https?:\/\/wx\.mygolbs\.com\/WxBusServer\/ApiData\.do script-path = https://raw.githubusercontent.com/canff/loon/refs/heads/main/scripts/zhangshanggongjiao.js, requires-body = true, tag = 移除小程序去广告
+# > 掌上公交
+http-response ^https?:\/\/wx\.mygolbs\.com\/WxBusServer\/ApiData\.do script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/zhangshanggongjiao.js, requires-body=true, timeout=60, tag=掌上公交小程序广告
 
 [MitM]
 hostname = quanguo.mygolbs.com, wx.mygolbs.com
