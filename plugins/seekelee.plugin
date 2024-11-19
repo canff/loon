@@ -1,8 +1,8 @@
 #!name=可莉插件查看
 #!desc=修改ua访问可莉插件
 
-[Header Rewrite]
-http-request https:\/\/kelee\.one(\/.*)? header-replace User-Agent "Surge iOS/3359"
+[Rewrite]
+http-request https:\/\/kelee\.one(\/.*)? header-replace User-Agent "Shadowrocket/2441 CFNetwork/1410.1 Darwin/22.6.0"
 
 [MITM]
-hostname = %APPEND% kelee.one
+hostname = kelee.one
