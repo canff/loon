@@ -1,8 +1,6 @@
-#!name=可莉插件查看
-#!desc=修改ua访问可莉插件
-
-[Rewrite]
-http-request https:\/\/kelee\.one(\/.*)? header-replace User-Agent "Shadowrocket/2441 CFNetwork/1410.1 Darwin/22.6.0"
+[Script]
+# 更改访问 kelee.one 域名的 User-Agent
+http-request ^https?:\/\/.*\.?kelee\.one(\/.*)? script-path=change-ua.js, requires-body=false
 
 [MITM]
-hostname = kelee.one
+hostname = *.kelee.one
