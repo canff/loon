@@ -1,3 +1,6 @@
+#!name=spotify歌词翻译
+#!desc=spotify歌词翻译，百度翻译接口
+
 hostname =spclient.wg.spotify.com
 [Script]
 # 修改下方argument中的appid和securityKey,填入自己的appid和密钥
