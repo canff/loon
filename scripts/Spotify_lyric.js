@@ -3,8 +3,8 @@ var appName = "";
 var spotifyAppID = "";
 var spotifySecurityKey = "";
 var options = {
-  appid: "",
-  securityKey: "",
+  appid: "20250302002289634",
+  securityKey: "AHAAeReAWZAYmnN3Jr4j",
 };
 
 function Env(name) {
