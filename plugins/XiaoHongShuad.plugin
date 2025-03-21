@@ -1,0 +1,17 @@
+#!name = 小红书评论区去广告
+#!desc = 过滤信息流推广，移除图片及视频水印。(禁用了搜索栏“猜你想搜”的去广告规则。)
+#!openUrl = https://apps.apple.com/app/id741292507
+#!author = 
+#!tag = 去广告
+#!system = 
+#!system_version = 
+#!loon_version = 3.2.1(745)
+#!homepage = https://gitlab.com/lodepuly/vpn_tool/-/blob/master/README.md
+#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/RedPaper.png
+#!date = 2025-0321 14:20:28
+[Script]
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v5\/note\/comment\/list\? script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body=true, timeout=60, tag=小红书评论区水印
+http-response ^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v1\/interaction\/comment\/video\/download\? script-path=https://github.com/fmz200/wool_scripts/raw/main/Scripts/xiaohongshu/xiaohongshu.js, requires-body=true, timeout=60, tag=小红书评论区水印
+
+[MitM]
+hostname = edith.xiaohongshu.com, www.xiaohongshu.com
