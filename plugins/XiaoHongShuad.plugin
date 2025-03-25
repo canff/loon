@@ -9,7 +9,7 @@
 #!homepage = 
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/RedPaper.png
 #!date = 2025-03-21 14:20:28
-[Rules]
+[Rule]
 # > 小红书
 AND, ((PROTOCOL, QUIC), (DOMAIN-SUFFIX, xiaohongshu.com)), REJECT
 [Rewrite]
