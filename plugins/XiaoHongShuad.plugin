@@ -1,12 +1,12 @@
-#!name = 小红书评论区去广告
+#!name = 小红书去广告&去水印
 #!desc = 过滤信息流推广，移除图片及视频水印。(禁用了搜索栏“猜你想搜”的去广告规则。)
 #!openUrl = https://apps.apple.com/app/id741292507
 #!author = 
-#!tag = 去广告
+#!tag = 去广告、去水印
 #!system = 
 #!system_version = 
 #!loon_version = 3.2.1(745)
-#!homepage = https://gitlab.com/lodepuly/vpn_tool/-/blob/master/README.md
+#!homepage = 
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/RedPaper.png
 #!date = 2025-03-21 14:20:28
 [Rules]
