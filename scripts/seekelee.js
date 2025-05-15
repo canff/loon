@@ -1,13 +1,11 @@
 
 // change-ua.js
 // ==UserScript==
-const modifiedUA = "Shadowrocket/2441 CFNetwork/1410.1 Darwin/22.6.0";
-
-if ($request.headers) {
-  let headers = $request.headers;
-  headers['User-Agent'] = modifiedUA;
-  $done({headers: headers});
+// kelee-useragent.js
+if ($request && $request.headers) {
+  const headers = $request.headers;
+  headers['User-Agent'] = 'Loon/859 CFNetwork/1410.1 Darwin/22.6.0';
+  $done({ headers });
 } else {
   $done({});
 }
-// ==/UserScript==
