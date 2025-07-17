@@ -14,7 +14,7 @@ if ($request && $request.headers) {
   }
 
   // 设置新的 User-Agent
-  headers['User-Agent'] = 'Loon/859 CFNetwork/1410.1 Darwin/22.6.0';
+  headers['User-Agent'] = 'Loon/882 CFNetwork/1410.1 Darwin/22.6.0';
   $done({ headers });
 } else {
   $done({});
