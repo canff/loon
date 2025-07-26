@@ -1,0 +1,7 @@
+[MitM]
+hostname = *.taobao.com, *.goofish.com
+
+[Rewrite]
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.ads\.config\/ url reject-dict
+^https:\/\/g-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.ads\.config\/ url reject-dict
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.whale\.modulet\/ url reject-dict
