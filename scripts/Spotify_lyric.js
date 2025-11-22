@@ -1,10 +1,10 @@
 var $XiaoMao = new Env("Spotify");
 var appName = "";
-var spotifyAppID = "20250302002289634";
-var spotifySecurityKey = "AHAAeReAWZAYmnN3Jr4j";
+var spotifyAppID = "";
+var spotifySecurityKey = "";
 var options = {
-  appid: "20250302002289634",
-  securityKey: "AHAAeReAWZAYmnN3Jr4j",
+  appid: "",
+  securityKey: "",
 };
 
 function Env(name) {
