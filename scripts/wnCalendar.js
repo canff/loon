@@ -6,35 +6,6 @@
  * 定时任务添加： 0 7,10 * * * https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/Mine/wnCalendar/wnCalendar.js
  */
 
-/*
-wnCalendar.js - 修改版
-添加了年月日显示在标题位置
-*/
-
-const lunar = getLunar(new Date());
-
-// 获取当前年月日
-const now = new Date();
-const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
-
-const panel = {
-    title: `今日黄历 ${dateStr}`, // 在这里添加了年月日显示
-    icon: "calendar.system",
-    "icon-color": "#5AC8FA",
-    content: `干支纪法：${lunar.gzYear}年 ${lunar.gzMonth}月 ${lunar.gzDay}日\n` +
-             `🚫 忌：${lunar.isBad}\n` +
-             `✅ 宜：${lunar.isGood}`
-};
-
-$done(panel);
-
-// --- 以下为农历转换逻辑（保持原脚本逻辑不变） ---
-function getLunar(date) {
-    // 此处省略原脚本冗长的农历计算逻辑，请在实际使用时
-    // 仅将原脚本最后几行的 $done({ title: "今日黄历", ... }) 部分
-    // 替换为上方我写的 panel 变量逻辑即可。
-}
-
 const $ = new Env('wnCalendar', true)
 let title = '📅 今日黄历'
 let proxy = 'https://mirror.ghproxy.com/'
